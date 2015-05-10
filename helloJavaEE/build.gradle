@@ -1,0 +1,42 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'war'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile(
+    	'commons-collections:commons-collections:3.2',
+		'javax:javaee-api:7.0',
+		'org.primefaces:primefaces:5.2'
+    )
+
+    testCompile 'junit:junit:4.+'
+}
+
+ext {
+    glassFishHome = 'C:/glassfish-4.1/glassfish4'
+    asadmin = glassFishHome + (isWindows() ? '/bin/asadmin.bat'
+                                           : '/bin/asadmin')
+    domain = 'domain1'
+}
+
+def isWindows() {
+    return System.properties['os.name'].toLowerCase().contains('windows')
+}
+
+task startServer(type: Exec) {
+    commandLine asadmin, 'start-domain', '--debug=true', domain
+}
+
+task stopServer(type: Exec) {
+    commandLine asadmin, 'stop-domain', domain
+}
+
+task deploy(type: Exec, dependsOn: 'war') {
+    commandLine asadmin, 'deploy', '--force=true', war.archivePath
+}
