@@ -18,6 +18,9 @@ dependencies {
     testCompile 'junit:junit:4.+'
 }
 
+def defaultEncoding = 'UTF-8'
+tasks.withType(AbstractCompile)*.options*.encoding = defaultEncoding
+
 ext {
     glassFishHome = 'C:/glassfish-4.1/glassfish4'
     asadmin = glassFishHome + (isWindows() ? '/bin/asadmin.bat'

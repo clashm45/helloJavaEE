@@ -7,6 +7,8 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title><ui:insert name="title">Hello Java EE</ui:insert></title>
+
+	<h:outputStylesheet library="css" value="myshowcase.css" />
 </h:head>
 
 <h:body>
@@ -15,22 +17,21 @@
 
 	<p:layout fullPage="true">
 
-		<p:layoutUnit position="west" size="200" header="sidemenu" collapsible="true">
+		<p:layoutUnit position="west" size="300" collapsible="true">
 			<ui:insert name="sidemenu">
-				<!-- <ui:include src="header.xhtml"/> -->
-				Side Menu area.
+				<ui:include src="sidemenu.xhtml"/>
 			</ui:insert>
 		</p:layoutUnit>
 
 		<p:layoutUnit position="center">
 			<p:layout>
-				<p:layoutUnit position="north" size="200" header="content header" collapsible="true">
+				<p:layoutUnit position="north" size="200" collapsible="true">
 					<ui:insert name="content-header">
 			    		Content Header area.
 					</ui:insert>
 				</p:layoutUnit>
 
-				<p:layoutUnit position="center" header="content">
+				<p:layoutUnit position="center">
 					<ui:insert name="content">
 			    		Content area.
 					</ui:insert>

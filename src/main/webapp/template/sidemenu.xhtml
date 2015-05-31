@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<h:outputStylesheet library="css" value="myshowcase.css" />
+
+	<style type="text/css">
+		.ui-accordion .ui-accordion-content { padding: 0px; }
+	</style>
+</h:head>
+
+<h:body>
+	<p:accordionPanel value="#{menuBean.menuTabs}" var="menutab" >
+		<p:tab title="#{menutab.title}">
+			<p:dataList value="#{menutab.subTitles}" var="subtitle">
+				<p:link outcome="index" value="#{subtitle}" />
+			</p:dataList>
+
+
+		</p:tab>
+	</p:accordionPanel>
+
+
+
+</h:body>
+
+</html>
