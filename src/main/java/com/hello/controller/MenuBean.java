@@ -1,9 +1,11 @@
 package com.hello.controller;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.hello.ejb.MenuService;
@@ -15,20 +17,22 @@ import com.hello.model.MenuTab;
  *
  */
 @Named
-public class MenuBean {
+@SessionScoped
+public class MenuBean implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-	@EJB
+	@Inject
 	private MenuService menuService;
 
 	private List<MenuTab> menuTabs;
 
 	@PostConstruct
 	public void init() {
-		this.setMenuTabs(menuService.generateMenu());
+		this.setMenuTabs(this.menuService.generateMenu());
 	}
 
 	public List<MenuTab> getMenuTabs() {
-		return menuTabs;
+		return this.menuTabs;
 	}
 
 	public void setMenuTabs(List<MenuTab> menuTabs) {

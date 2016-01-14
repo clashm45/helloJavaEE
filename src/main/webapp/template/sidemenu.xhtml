@@ -16,17 +16,14 @@
 </h:head>
 
 <h:body>
-	<p:accordionPanel value="#{menuBean.menuTabs}" var="menutab" >
-		<p:tab title="#{menutab.title}">
-			<p:dataList value="#{menutab.subTitles}" var="subtitle">
-				<p:link outcome="index" value="#{subtitle}" />
+	<p:accordionPanel value="#{menuBean.menuTabs}" var="tab">
+		<p:tab title="#{tab.title}">
+			<p:dataList value="#{tab.subTitles}" var="subTitle">
+			#{subTitle}
 			</p:dataList>
-
-
 		</p:tab>
+	
 	</p:accordionPanel>
-
-
 
 </h:body>
 

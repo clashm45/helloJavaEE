@@ -5,11 +5,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import javax.ejb.Stateless;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
 import com.hello.model.MenuTab;
 
-@Stateless
+@Named
+@RequestScoped
 public class MenuService {
 
 	enum Tabs {

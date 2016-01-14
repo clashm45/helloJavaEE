@@ -9,14 +9,15 @@
 
 <ui:composition template="/template/template.xhtml">
 	<ui:define name="content-header">
-		<h1 class="title ui-widget-header ui-corner-all">Welcome to my ShowCase</h1>
+		<h1>Welcome to my ShowCase</h1>
 	</ui:define>
 
 	<ui:define name="content">
 
 		<h1>Hello World!!</h1>
+		
+		<h:outputText value="#{helloBean.msg} JSF world"/>
 
-		<h:outputLabel value="JSF world" />
 	</ui:define>
 </ui:composition>
 </html>
