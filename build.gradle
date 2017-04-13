@@ -21,6 +21,11 @@ dependencies {
 def defaultEncoding = 'UTF-8'
 tasks.withType(AbstractCompile)*.options*.encoding = defaultEncoding
 
+//heroku
+task stage {
+	dependsOn build
+}
+
 eclipse {
     project {
         name = 'weeklyReportSupport'
